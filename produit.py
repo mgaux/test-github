@@ -35,7 +35,8 @@ class Produit:
         
 class ProduitPerissable(Produit):
     def __init__(self,  numEAN, identifiant, nom, prixBase, dateFabrication, dureeConso):
-	Produit.__init__(self,numEAN, identifiant, nom, prixBase, dateFabrication)
+	super().__init__(self,  numEAN, identifiant, nom, prixBase, dateFabrication)
+
         self.dureeConso = timedelta(int(dureeConso))
     
     def enPromo(self):
@@ -59,13 +60,7 @@ class ProduitPerissable(Produit):
         return datetime.now() > self.dateFab + self.dureeConso
     
     def __repr__(self):
-        chaine = "Référence (EAN) : {}\n".format(self.numEAN)
-        chaine += "Identifiant : {}\n".format(self.id)
-        chaine += "Nom : {}\n".format(self.nom)
-        chaine += "Date de fabrication : {}\n".format(self.dateFab.strftime("%d/%m/%Y"))
-        chaine += "En promo : {}\n".format("oui" if self.enPromo() else "non")
-        chaine += "Prix de base : {:.2f}\n".format(self.prixBase)
-        chaine += "Prix actuel : {:.2f}\n".format(self.calculerPrixActuel())
+        chaine = super().__repr__(self) 
         dateLimite = self.dateFab + self.dureeConso
         chaine += "A consommer avant le : {}\n".format(dateLimite.strftime("%d/%m/%Y"))
         if self.dernierJour():
