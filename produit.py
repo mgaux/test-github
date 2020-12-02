@@ -73,3 +73,4 @@ class ProduitPerissable(Produit):
         elif self.alerteARetirer():
             chaine += "Attention, produit périmé !\n"
         return chaine
+
