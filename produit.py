@@ -35,11 +35,7 @@ class Produit:
         
 class ProduitPerissable(Produit):
     def __init__(self,  numEAN, identifiant, nom, prixBase, dateFabrication, dureeConso):
-		self.numEAN = numEAN
-        self.id = identifiant
-        self.nom = nom
-        self.prixBase = prixBase
-        self.dateFab = datetime.strptime(dateFabrication, "%d/%m/%Y")
+	Produit.__init__(self,numEAN, identifiant, nom, prixBase, dateFabrication)
         self.dureeConso = timedelta(int(dureeConso))
     
     def enPromo(self):
