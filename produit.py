@@ -36,6 +36,7 @@ class Produit:
 class ProduitPerissable(Produit):
     def __init__(self,  numEAN, identifiant, nom, prixBase, dateFabrication, dureeConso):
 	super().__init__(self,  numEAN, identifiant, nom, prixBase, dateFabrication)
+
         self.dureeConso = timedelta(int(dureeConso))
     
     def enPromo(self):
@@ -67,3 +68,4 @@ class ProduitPerissable(Produit):
         elif self.alerteARetirer():
             chaine += "Attention, produit périmé !\n"
         return chaine
+
